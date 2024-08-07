@@ -34,7 +34,7 @@ class EmployeeController extends Controller
         Employee::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => $request->password,
             'employee_role' => $request->employee_role,
             'address' => $request->address,
             'tel' => $request->tel,

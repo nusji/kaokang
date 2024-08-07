@@ -33,7 +33,7 @@
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username" value="{{ old('username', $employee->username) }}" required>
         </div>
-        <button type="submit" class="btn btn-success">Update</button>
+        <button type="submit" class="btn btn-success">บันทึกการแก้ไข</button>
     </form>
 </div>
 @endsection
