@@ -52,22 +52,34 @@ class MenuTypeController extends Controller
             ->with('success', 'Menu Type updated successfully.');
     }
 
-    public function typeDelete(MenuType $menuType)
+    public function typeDelete($menu_type_id)
     {
-        $menuType->delete();
 
+        $menuType = menuType::findOrFail($menu_type_id);
+        // ตรวจสอบว่ามีข้อมูลที่อ้างอิงอยู่หรือไม่
+        if ($menuType->menuType()->count() > 0) {
+            return redirect()->route('menus.type.type')
+                             ->with('error', 'ไม่สามารถลบประเภทวัตถุดิบนี้ได้ เนื่องจากมีการอ้างอิงในข้อมูลวัตถุดิบ');
+        }
+    
+        $menuType->delete();
+        return redirect()->route('menus.type.type')
+                         ->with('success', 'ประเภทวัตถุดิบถูกลบเรียบร้อยแล้ว');
+
+        $menuType->delete();
         return redirect()->route('menus.type.type')
             ->with('success', 'Menu Type deleted successfully.');
     }
 
-    public function showRecipes($menu_id)
-    {
-        $menu = Menu::where('menu_id', $menu_id)->with('recipes')->firstOrFail();
-        return view('menus.recipes', compact('menu'));
-    }
-    public function show($recipe_id)
-    {
-        $recipe = MenuRecipe::findOrFail($recipe_id);
-        return view('recipes.show', compact('recipe'));
-    }
+    
+    //public function showRecipes($menu_id)
+    //{
+    //    $menu = Menu::where('menu_id', $menu_id)->with('recipes')->firstOrFail();
+      //  return view('menus.recipes', compact('menu'));
+    //}
+    //public function show($recipe_id)
+    //{
+      //  $recipe = MenuRecipe::findOrFail($recipe_id);
+       // return view('recipes.show', compact('recipe'));
+    //}
 }

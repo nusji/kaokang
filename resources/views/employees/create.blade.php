@@ -21,8 +21,7 @@
         <div class="form-group">
             <label for="employee_role">สิทธิ์/ตำแหน่ง</label>
             <select class="form-control" id="employee_role" name="employee_role" required>
-                <option value="owner" {{ old('employee_role') == 'owner' ? 'selected' : '' }}>Owner</option>
-                <option value="employee" {{ old('employee_role') == 'employee' ? 'selected' : '' }}>Employee</option>
+                <option value="employee" selected>Employee</option>
             </select>
         </div>
         <div class="form-group">

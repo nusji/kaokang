@@ -14,11 +14,14 @@
                         <p class="card-text">อีเมลล์ : {{ $employee->email }}</p>
                         <p class="card-text">ประเภท : {{ $employee->employee_role }}</p>
                         <p class="card-text">เบอร์โทร : {{ $employee->tel }}</p>
+                        <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info">ดูข้อมูล</a>
+                        @if ($employee->employee_role !== 'owner')
                         <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-primary">แก้ไข</a>
                         <form action="{{ route('employees.delete', $employee->id) }}" method="POST" class="d-inline">
                             @csrf
                             <button type="submit" class="btn btn-danger">ลบพนักงาน</button>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

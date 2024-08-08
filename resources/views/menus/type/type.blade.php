@@ -28,7 +28,10 @@
                 <td>{{ $type->menu_type_name }}</td>
                 <td>{{ $type->menu_type_detail }}</td>
                 <td>
-                    <a href="{{ route('menus.type.edit', $type->menu_type_id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('menus.type.edit', $type->menu_type_id) }}" class="btn btn-warning">แก้ไข</a>
+                </td>
+                <td>
+                    <a href="{{ route('menus.type.delete', $type->menu_type_id) }}" class="btn btn-danger">ลบ</a>
                 </td>
             </tr>
             @endforeach

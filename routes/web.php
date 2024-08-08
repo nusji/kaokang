@@ -80,10 +80,13 @@ Route::group(['middleware' => ['auth', 'role:owner']], function () {
     //จัดการพนักงาน
     Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
     Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
-    Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
     Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
     Route::post('/employees/{employee}/update', [EmployeeController::class, 'update'])->name('employees.update');
     Route::post('/employees/{employee}/delete', [EmployeeController::class, 'delete'])->name('employees.delete');
+
+    Route::get('employees/{id}', [EmployeeController::class, 'show'])->name('employees.show');
+
 });
 
 
