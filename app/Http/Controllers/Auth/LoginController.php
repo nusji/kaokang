@@ -25,6 +25,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+    
 
     protected function attemptLogin(Request $request)
     {
@@ -55,4 +56,11 @@ class LoginController extends Controller
     {
         return redirect('/login'); // เปลี่ยนเส้นทางไปที่หน้าล็อกอินหลังจากล็อกเอาท
     }
+
+    protected function sendFailedLoginResponse(Request $request)
+{
+    // ส่ง Flash Message กลับไป
+    return redirect()->back()->with('error', 'ไม่พบผู้ใช้งาน หรือรหัสผ่านไม่ถูกต้อง');
+}
+
 }

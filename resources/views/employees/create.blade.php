@@ -1,17 +1,21 @@
-<!-- resources/views/employees/create.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <form action="{{ route('employees.store') }}" method="POST">
         @csrf
+
+        <h3>ข้อมูลพื้นฐานของพนักงาน</h3>
         <div class="form-group">
             <label for="name">ชื่อ-สกุล</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
         </div>
         <div class="form-group">
-            <label for="email">อีเมลล์</label>
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">อีเมลเข้าใช้งาน</label>
             <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
         </div>
         <div class="form-group">
@@ -24,19 +28,8 @@
                 <option value="employee" selected>Employee</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="address">ที่อยู่บ้าน</label>
-            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="tel">เบอร์โทร</label>
-            <input type="text" class="form-control" id="tel" name="tel" value="{{ old('tel') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
-        </div>
-        <button type="submit" class="btn btn-success">บันทึกพนักงานใหม่</button>
+
+        <button type="submit" class="btn btn-success">บันทึกข้อมูลพื้นฐาน</button>
     </form>
 </div>
 @endsection
